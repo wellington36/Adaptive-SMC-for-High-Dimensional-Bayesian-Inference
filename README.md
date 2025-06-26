@@ -1,1 +1,1 @@
-# Adaptive-SMC-for-High-Dimensional-Bayesian-Inference
+# Adaptive SMC for High Dimensional Bayesian Inference
