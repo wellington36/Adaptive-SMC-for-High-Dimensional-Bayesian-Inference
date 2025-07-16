@@ -3,15 +3,15 @@ library(dplyr)
 
 #set.seed(123)
 
-d <- 100
-N <- 1000
+d <- 200
+N <- 200
 T <- d  # intermediate distributions (following paper)
 threshold <- 0.7
 alpha_0 <- 0.01
 
 # Data
 A <- matrix(rnorm(d * d, 0, 1 / sqrt(d)), d, d)
-x_true <- rnorm(d, mean = 2, sd = 0.1)
+x_true <- rnorm(d, mean = 2, sd = .1)
 y <- A %*% x_true + rnorm(d)
 
 # Tempering schedule
@@ -87,11 +87,6 @@ for (i in 1:N) {
   posterior_cov_weighted <- posterior_cov_weighted + w[i] * (diff %*% t(diff))
 }
 
-# True vs posterior mean
-plot(x_true, posterior_mean_weighted, pch = 20, col = "blue",
-     xlab = "True x", ylab = "Posterior Mean Estimate",
-     main = "Posterior Recovery")
-abline(0, 1, col = "red", lwd = 2)
 
 # Mean-variance space
 mv_data <- data.frame(
@@ -116,3 +111,9 @@ ggplot(mv_data %>% filter(component %in% 1:d),
        title = "Marginal Points in Mean–Variance Space",
        subtitle = "Points represent SMC steps across components") +
   theme_minimal()
+
+# True vs posterior mean
+plot(x_true, posterior_mean_weighted, pch = 20, col = "blue",
+     xlab = "True x", ylab = "Posterior Mean Estimate",
+     main = "Posterior Recovery")
+abline(0, 1, col = "red", lwd = 2)
