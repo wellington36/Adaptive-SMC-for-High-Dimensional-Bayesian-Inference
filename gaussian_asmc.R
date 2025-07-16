@@ -3,10 +3,10 @@ library(dplyr)
 
 #set.seed(123)
 
-d <- 200
+d <- 100
 N <- 1000
 T <- d  # intermediate distributions (following paper)
-threshold <- 0
+threshold <- 0.7
 alpha_0 <- 0.01
 
 # Data
@@ -103,8 +103,8 @@ mv_data <- data.frame(
 )
 
 # Sample a subset of components for visualization clarity (optional)
-plot_components <- sample(1:d, 10)
-plot_components <- c(1, 2)
+# plot_components <- sample(1:d, 10)
+
 
 # Plot: points only
 ggplot(mv_data %>% filter(component %in% 1:d),
