@@ -6,7 +6,7 @@ library(dplyr)
 d <- 200
 N <- 200
 T <- d  # intermediate distributions (following paper)
-threshold <- 0.7
+threshold <- 0.5
 alpha_0 <- 0.01
 
 # Data
